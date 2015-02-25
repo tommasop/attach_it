@@ -1,6 +1,6 @@
 <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
   <%= image_tag(attached_file.thumb_url, class: 'img-responsive') if attached_file.file_data_stored? %>
   <div class="wrap breakit"><%= attached_file.file_data_name %></div>
-  <%= link_to 'Remove', "/attached_files/#{attached_file.id}", data: {method: 'delete', remote: 'true', confirm: 'Want to delete this image?'}, rel: 'nofollow', class: ' btn-danger btn-xs delete-image' %>
-  <%= link_to 'Download', "/attached_files/#{attached_file.id}/download", class: ' btn-primary btn-xs' %>
+  <%= link_to 'Remove', attach_it.attached_files(attached_file.id), data: {method: 'delete', remote: 'true', confirm: 'Want to delete this image?'}, rel: 'nofollow', class: ' btn-danger btn-xs delete-image' %>
+  <%= link_to 'Download', attach_it.download_attached_file(attached_file.id), class: ' btn-primary btn-xs' %>
 </li>
