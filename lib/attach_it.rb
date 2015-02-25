@@ -1,5 +1,5 @@
-require_relative "attach_it/engine" if defined?(Rails)
-require "attach_it/model"
+require "attach_it/version"
+require "attach_it/engine" if defined?(Rails)
 
 module AttachIt
 end
