@@ -5,8 +5,8 @@ module AttachIt
     extend ActiveSupport::Concern
 
     included do
-      has_many :attach_it_attached_files, as: :attacheable, dependent: :destroy
-      accepts_nested_attributes_for :attach_it_attached_files, allow_destroy: true
+      has_many :attached_files, , class_name: "AttachIt::AttachedFile",  as: :attacheable, dependent: :destroy
+      accepts_nested_attributes_for :attached_files, allow_destroy: true
     end
 
     module ClassMethods
