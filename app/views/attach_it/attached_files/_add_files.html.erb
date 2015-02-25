@@ -1,10 +1,10 @@
 <h2>List of attachments</h2>
 <ul class="row">
-  <%= render partial: 'show_files', collection: attached_model.attached_files, as: :attached_file  %>
+  <%= render partial: 'show_files', collection: attached_model.attach_it_attached_files, as: :attached_file  %>
 </ul>
 <%= form_for AttachedFile.new, html: {class: "dropzone"} do |f| %>
-  <input type="hidden" name="attached_file[attacheable_type]" value="<%= attached_model.class %>" />
-  <input type="hidden" name="attached_file[attacheable_id]" value="<%= attached_model.id %>" />
+  <input type="hidden" name="attach_it_attached_file[attacheable_type]" value="<%= attached_model.class %>" />
+  <input type="hidden" name="attach_it_attached_file[attacheable_id]" value="<%= attached_model.id %>" />
   <div class="form-group fallback">
     <%= f.label :file_data, 'Choose files here' %>
     <%= f.file_field :file_data %>
@@ -27,12 +27,12 @@ $(document).ready(function(){
   Dropzone.autoDiscover = false;
 
   // grap our upload form by its id
-  $("#new_attached_file").dropzone({
+  $("#new_attach_it_attached_file").dropzone({
     // restrict image size to a maximum 1MB
     // maxFilesize: 1,
     // changed the passed param to one accepted by
     // our rails app
-    paramName: "attached_file[file_data]",
+    paramName: "attach_it_attached_file[file_data]",
       // show remove links on each image upload
     addRemoveLinks: true
   }); 
