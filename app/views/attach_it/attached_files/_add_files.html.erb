@@ -1,6 +1,6 @@
 <h2>List of attachments</h2>
 <ul class="row">
-  <%= render partial: 'show_files', collection: attached_model.attached_files, as: :attached_file  %>
+  <%= render partial: 'attach_it/attached_files/show_files', collection: attached_model.attached_files, as: :attached_file  %>
 </ul>
 <%= form_for AttachedFile.new, html: {class: "dropzone"} do |f| %>
   <input type="hidden" name="attached_file[attacheable_type]" value="<%= attached_model.class %>" />
