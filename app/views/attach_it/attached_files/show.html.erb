@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attacheable:</strong>
+  <%= @attached_file.attacheable %>
+</p>
+
+<p>
+  <strong>File data uid:</strong>
+  <%= @attached_file.file_data_uid %>
+</p>
+
+<p>
+  <strong>File data name:</strong>
+  <%= @attached_file.file_data_name %>
+</p>
+
+<%= link_to 'Edit', edit_attached_file_path(@attached_file) %> |
+<%= link_to 'Back', attached_files_path %>
