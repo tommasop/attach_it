@@ -1,0 +1,15 @@
+<% if files.present? %>
+  <ul class="row">
+    <% files.each do |file| %>
+      <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+        <%= image_tag(file.thumb_url, class: 'img-responsive') if file.file_data_stored? %>
+        <div class="wrap breakit"><%= file.file_data_name %></div>
+        <%= link_to 'Remove', "/attached_files/#{file.id}", data: {method: 'delete', remote: 'true', confirm: 'Want to delete this image?'}, rel: 'nofollow', class: ' btn-danger btn-xs delete-image' %>
+        <%= link_to 'Download', "/attached_files/#{file.id}/download", class: ' btn-primary btn-xs' %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p></p>
+  <h3>No attached files!</h3>
+<% end %>

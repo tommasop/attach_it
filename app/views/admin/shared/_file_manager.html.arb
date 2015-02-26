@@ -1,0 +1,15 @@
+panel 'Data' do
+  attributes_table_for model do
+    model.class.columns.collect{|column| column.name.to_sym }.each do | col |
+      row col
+    end 
+  end
+end
+
+panel 'Attached Files' do
+  render partial: 'admin/shared/show_files', locals: {files: model.attached_files}
+end
+
+panel 'Add Files' do
+  render partial: 'admin/shared/add_files', locals: {attached_model: model}
+end

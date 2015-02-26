@@ -1,0 +1,52 @@
+<%= form_for(AttachIt::AttachedFile.new, url: attach_it.attached_files_path,  html: {class: "dropzone"}) do |f| %>
+  <input type="hidden" name="attached_file[attacheable_type]" value="<%= attached_model.class %>" />
+  <input type="hidden" name="attached_file[attacheable_id]" value="<%= attached_model.id %>" />
+  <div class="form-group fallback">
+    <%= f.label :file_data, 'Choose files here' %>
+    <%= f.file_field :file_data %>
+    <%= f.submit "Uplod Files" %>
+  </div>
+<% end %>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">         
+      <div class="modal-body">                
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+$(document).ready(function(){
+  // disable auto discover
+  Dropzone.autoDiscover = false;
+
+  // grap our upload form by its id
+  $("#new_attached_file").dropzone({
+    // restrict image size to a maximum 1MB
+    // maxFilesize: 1,
+    // changed the passed param to one accepted by
+    // our rails app
+    paramName: "attached_file[file_data]",
+    // show remove links on each image upload
+    addRemoveLinks: true
+  }); 
+  // Add modal lightbox
+  $('li img').on('click',function(){
+    var src = $(this).attr('src');
+    var img = '<img src="' + src + '" class="img-responsive"/>';
+    console.log(img);
+    $('#myModal').modal();
+    $('#myModal').on('shown.bs.modal', function(){
+      $('#myModal .modal-body').html(img);
+    });
+    $('#myModal').on('hidden.bs.modal', function(){
+      $('#myModal .modal-body').html('');
+    });
+  });
+  $('.delete-image').bind('ajax:success', function() {
+    $(this).closest('li').fadeOut();
+  });
+});
+</script>
