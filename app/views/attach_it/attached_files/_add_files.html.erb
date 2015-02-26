@@ -2,7 +2,7 @@
 <ul class="row">
   <%= render partial: 'attach_it/attached_files/show_files', collection: attached_model.attached_files, as: :attached_file  %>
 </ul>
-<%= form_for [AttachIt, AttachedFile.new], html: {class: "dropzone"} do |f| %>
+<%= form_for(AttachIt::AttachedFile.new, url: attach_it.attached_file,  html: {class: "dropzone"} do |f| %>
   <input type="hidden" name="attached_file[attacheable_type]" value="<%= attached_model.class %>" />
   <input type="hidden" name="attached_file[attacheable_id]" value="<%= attached_model.id %>" />
   <div class="form-group fallback">
