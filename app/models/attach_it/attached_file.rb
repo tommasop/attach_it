@@ -17,9 +17,10 @@ module AttachIt
                  when 'png', 'gif' ,'jpeg', 'jpg'
                    file_data
                  when 'pdf'
-                   Dragonfly.app.fetch_file('public/pdf.png')
+                   file_data.thumb('40x30', format: 'png', frame: 0).encode('png')
+                   # Dragonfly.app.fetch_file('public/pdf.png')
                  when 'doc', 'docx'
-                   Dragonfly.app.fetch_file('public/doc.png')
+                   Dragonfly.app.fetch_file('attach_it/doc.png')
                  end
       original.url
     end
