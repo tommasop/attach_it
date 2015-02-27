@@ -21,4 +21,14 @@ it will
 
     include AttachIt::Attacheable
 
+4. Add partial to show and add files to your view
+
+    <%= render "attach_it/attached_files/add_files", attached_model: @actual_model  %>
+
+5. Add partial to show and add files to your activeadmin view
+
+    show do
+      render 'admin/shared/show', model: actual_model
+    end 
+
 This project rocks and uses MIT-LICENSE.
