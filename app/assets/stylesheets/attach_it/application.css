@@ -14,22 +14,3 @@
  *= require_self
  */
 
-ul.row {         
-  padding:0 0 0 0;
-  margin:0 0 0 0;
-}
-ul.row li {     
-  list-style:none;
-  margin-bottom:25px;           
-}
-ul.row li img {
-  cursor: pointer;
-}
-a.btn-xs {
-  color: #fff;
-  text-decoration: none;
-}
-.breakit {
-  word-wrap:break-word;
-}
-
