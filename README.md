@@ -56,7 +56,7 @@ So for example if you need to have n documents and one image you can do somethin
     # Multiple Documents
     include AttachIt::Attacheable
     # The image
-    has_one :image, class_name: "AttachIt::AttachedFile", -> { where attachment_type: 'the_image' }, as: :attacheable,  dependent: :destroy
+    has_one :image, -> { where attachment_type: 'the_image' }, class_name: "AttachIt::AttachedFile", as: :attacheable,  dependent: :destroy
     accepts_nested_attributes_for :image, allow_destroy: true 
   end
   ```
