@@ -43,4 +43,22 @@ Active Admin Integration
     end 
   ```
 
+Something Fancier
+============
+
+The migration file adds an `attachment_type` string column to the attachment table.
+
+This allows you to have multiple has_* from your model to the `AttachIt::AttachmentFile` one.
+
+So for example if you need to have n documents and one image you can do something along this lines:
+  ```ruby
+  MyModel < ActiveRecord::Base
+    # Multiple Documents
+    include AttachIt::Attacheable
+    # The image
+    has_one :image, class_name: "AttachIt::AttachedFile", -> { where attachment_type: 'the_image' }, as: :attacheable,  dependent: :destroy
+    accepts_nested_attributes_for :image, allow_destroy: true 
+  end
+  ```
+
 This project rocks and uses MIT-LICENSE.
