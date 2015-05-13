@@ -13,7 +13,7 @@ module AttachIt
     # validates_property :format, of: :file_data, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :file_data_changed?
 
     def thumb_url
-      original = case file_data.ext
+      original = case file_data.ext.downcase
                  when 'png', 'gif' ,'jpeg', 'jpg'
                    file_data
                  when 'pdf'
